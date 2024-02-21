@@ -1,0 +1,133 @@
+﻿<Window x:Class="WpfApp5.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp5"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <TabControl>
+            <!--Pestaña de coches-->
+            <TabItem Header="Coches">
+                <StackPanel Orientation="Horizontal">
+                    
+                    
+                    
+                    
+                    
+                    <!--Parte Izquierdda-->
+                    <StackPanel>
+                        <Grid HorizontalAlignment="Left" VerticalAlignment="Top">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <!--TextField Matrícula -->
+                            <Label Content="Matrícula:" Grid.Row="0" />
+                            <TextBox Width="200" Height="25" FontFamily="Arial" Margin="0,0,0,15" FontSize="12" Grid.Row="1" Name="matricula"/>
+
+                            <!--Desplegable Marca -->
+                            <Label Content="Marca:" Grid.Row="2" />
+                            <ComboBox Name="marcaComboBox" FontSize="15" Margin="0,0,0,15" Grid.Row="3">
+                            </ComboBox>
+
+                            <!--Desplegable modelo -->
+                            <Label Content="Modelo:" Grid.Row="4" />
+                            <ComboBox Name="modeloComboBox" FontSize="15" Margin="0,0,0,15" Grid.Row="5">
+                            </ComboBox>
+
+                            <!-- Botón de Reset-->
+                            <Button Name="resetButton" Width="200" Height="25" Grid.Row="6" Click="Reset">Reset</Button>
+                        </Grid>
+                    </StackPanel>
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    <!--Parte Central-->
+                    <StackPanel Margin="10,0">
+                        <Border BorderBrush="Black" BorderThickness="1">
+                            <Grid HorizontalAlignment="Center" VerticalAlignment="Top">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+
+                                <ListView x:Name="coches">
+                                    <ListView.View>
+                                        <GridView>
+                                            <GridViewColumn Header="Marca" DisplayMemberBinding="{Binding Marca}" />
+                                            <GridViewColumn Header="Modelo" DisplayMemberBinding="{Binding Modelo}" />
+                                            <GridViewColumn Header="Matrícula" DisplayMemberBinding="{Binding Matricula}" />
+                                            <GridViewColumn Header="Precio por Día" DisplayMemberBinding="{Binding PrecioPorDia}" />
+                                            <GridViewColumn Header="Cliente Alquilado" DisplayMemberBinding="{Binding ClienteAlquilado}" />
+                                        </GridView>
+                                    </ListView.View>
+                                </ListView>
+                            </Grid>
+                        </Border>
+                    </StackPanel>
+                    
+                    
+                    
+                    
+                    
+                    <!--Parte Derecha-->
+
+                    <Grid HorizontalAlignment="Right" VerticalAlignment="Top">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        
+                        <Label Content="Opciones Disponibles" Grid.Row="0" Margin="0,0,0,15" FontWeight="Bold"/>
+                        <!--Fecha de Inicio-->
+                        <Label Content="Fecha de inicio" Grid.Row="1" />
+                        <TextBox Width="200" Height="25" FontFamily="Arial" Margin="0,0,0,15" FontSize="12" Grid.Row="2"/>
+                        <Button Width="200" Height="25" Grid.Row="6" Click="Reservar">Reservar Coche</Button>
+
+                        <!--Desplegable Marca -->
+                        <Label Content="Marca:" Grid.Row="2" />
+                        <ComboBox FontSize="15" Margin="0,0,0,15" Grid.Row="3">
+                        </ComboBox>
+
+                        <!--Desplegable modelo -->
+                        <Label Content="Modelo:" Grid.Row="4" />
+                        <ComboBox FontSize="15" Margin="0,0,0,15" Grid.Row="5">
+                        </ComboBox>
+
+                        <!-- Botón de Reset-->
+                        <Button Width="200" Height="25" Grid.Row="6" Click="Reset">Reset</Button>
+                    </Grid>
+
+
+                </StackPanel>
+            </TabItem>
+            
+            
+            
+            
+            <TabItem Header="Clientes">
+                <Grid>
+                </Grid>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>
