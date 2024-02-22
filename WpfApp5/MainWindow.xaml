@@ -11,11 +11,8 @@
             <!--Pestaña de coches-->
             <TabItem Header="Coches">
                 <StackPanel Orientation="Horizontal">
-                    
-                    
-                    
-                    
-                    
+
+
                     <!--Parte Izquierdda-->
                     <StackPanel>
                         <Grid HorizontalAlignment="Left" VerticalAlignment="Top">
@@ -30,29 +27,29 @@
                             </Grid.RowDefinitions>
                             <!--TextField Matrícula -->
                             <Label Content="Matrícula:" Grid.Row="0" />
-                            <TextBox Width="200" Height="25" FontFamily="Arial" Margin="0,0,0,15" FontSize="12" Grid.Row="1" Name="matricula"/>
+                            <TextBox Width="200" Height="25" FontFamily="Arial" Margin="0,0,0,15" FontSize="12" Grid.Row="1" Name="Matricula" TextChanged="CarChanged" />
 
                             <!--Desplegable Marca -->
                             <Label Content="Marca:" Grid.Row="2" />
-                            <ComboBox Name="marcaComboBox" FontSize="15" Margin="0,0,0,15" Grid.Row="3">
+                            <ComboBox Name="marcaComboBox" FontSize="15" Margin="0,0,0,15" Grid.Row="3" SelectionChanged="CarChanged">
                             </ComboBox>
 
                             <!--Desplegable modelo -->
                             <Label Content="Modelo:" Grid.Row="4" />
-                            <ComboBox Name="modeloComboBox" FontSize="15" Margin="0,0,0,15" Grid.Row="5">
+                            <ComboBox Name="modeloComboBox" FontSize="15" Margin="0,0,0,15" Grid.Row="5" SelectionChanged="CarChanged">
                             </ComboBox>
 
                             <!-- Botón de Reset-->
                             <Button Name="resetButton" Width="200" Height="25" Grid.Row="6" Click="Reset">Reset</Button>
                         </Grid>
                     </StackPanel>
-                    
-                    
-                    
-                    
-                    
-                    
-                    
+
+
+
+
+
+
+
                     <!--Parte Central-->
                     <StackPanel Margin="10,0">
                         <Border BorderBrush="Black" BorderThickness="1">
@@ -65,69 +62,115 @@
                                     <ColumnDefinition Width="Auto"/>
                                 </Grid.ColumnDefinitions>
 
-                                <ListView x:Name="coches">
+                                <ListView x:Name="tablaCoches" Height="400">
                                     <ListView.View>
                                         <GridView>
                                             <GridViewColumn Header="Marca" DisplayMemberBinding="{Binding Marca}" />
                                             <GridViewColumn Header="Modelo" DisplayMemberBinding="{Binding Modelo}" />
                                             <GridViewColumn Header="Matrícula" DisplayMemberBinding="{Binding Matricula}" />
                                             <GridViewColumn Header="Precio por Día" DisplayMemberBinding="{Binding PrecioPorDia}" />
-                                            <GridViewColumn Header="Cliente Alquilado" DisplayMemberBinding="{Binding ClienteAlquilado}" />
+                                            <GridViewColumn Header="Cliente Alquilado" DisplayMemberBinding="{Binding ClienteAlquilando}" />
                                         </GridView>
                                     </ListView.View>
                                 </ListView>
                             </Grid>
                         </Border>
                     </StackPanel>
-                    
-                    
-                    
-                    
-                    
+
+
+
+
+
                     <!--Parte Derecha-->
+                    <StackPanel>
+                        <Grid HorizontalAlignment="Right" VerticalAlignment="Top">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
 
-                    <Grid HorizontalAlignment="Right" VerticalAlignment="Top">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                        </Grid.RowDefinitions>
-                        
-                        <Label Content="Opciones Disponibles" Grid.Row="0" Margin="0,0,0,15" FontWeight="Bold"/>
-                        <!--Fecha de Inicio-->
-                        <Label Content="Fecha de inicio" Grid.Row="1" />
-                        <TextBox Width="200" Height="25" FontFamily="Arial" Margin="0,0,0,15" FontSize="12" Grid.Row="2"/>
-                        <Button Width="200" Height="25" Grid.Row="6" Click="Reservar">Reservar Coche</Button>
+                            <Label Content="Opciones Disponibles" Grid.Row="0" Margin="0,0,0,15" FontWeight="Bold"/>
+                            <!--Fecha de Inicio-->
+                            <Label Content="Fecha de inicio" Grid.Row="1" />
+                            <DatePicker Width="200" Height="25" FontFamily="Arial" Margin="0,0,0,0" FontSize="12" Grid.Row="2" Name="FechaInicio"/>
+                            <Button Width="200" Height="25" Grid.Row="3" Click="Reservar">Reservar Coche</Button>
 
-                        <!--Desplegable Marca -->
-                        <Label Content="Marca:" Grid.Row="2" />
-                        <ComboBox FontSize="15" Margin="0,0,0,15" Grid.Row="3">
-                        </ComboBox>
+                            <!--Fecha de fin -->
+                            <Label Content="Fecha de Fin" Grid.Row="4" />
+                            <DatePicker Width="200" Height="25" FontFamily="Arial" Margin="0,0,0,0" FontSize="12" Grid.Row="5" Name="FechaFinal"/>
+                            <Button Width="200" Height="25" Grid.Row="6" Click="Devolver">Devolver Coche</Button>
+                            <Button Width="200" Height="25" Grid.Row="7" Click="Borrar">Borrar Coche</Button>
 
-                        <!--Desplegable modelo -->
-                        <Label Content="Modelo:" Grid.Row="4" />
-                        <ComboBox FontSize="15" Margin="0,0,0,15" Grid.Row="5">
-                        </ComboBox>
+                            <!--Estadísticas-->
+                            <Label Content="Estadísticas" Grid.Row="8" FontWeight="Bold"/>
+                            <Label Content="" Grid.Row="9" Name="Etiqueta" Margin="0,10,0,0"/>
+                            <Label Content="" Grid.Row="10" Name="Warning" Margin="0,10,0,0" Foreground="Red"/>
 
-                        <!-- Botón de Reset-->
-                        <Button Width="200" Height="25" Grid.Row="6" Click="Reset">Reset</Button>
-                    </Grid>
+
+                        </Grid>
+                    </StackPanel>
 
 
                 </StackPanel>
             </TabItem>
-            
-            
-            
-            
+
+
+
+
+
+
+            <!--Pestaña de Clientes-->
             <TabItem Header="Clientes">
                 <Grid>
+
+                    <!-- Columnas -->
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+
+                    <!-- Parte Izquierda -->
+                    <StackPanel Grid.Column="0" Margin="10">
+                        <TextBox Width="200" Height="25" FontFamily="Arial" FontSize="12" Name="Buscador" TextChanged="ClientChanged"/>
+                    </StackPanel>
+
+                    <!-- Parte Central -->
+                    <Border Grid.Column="1" BorderBrush="Black" BorderThickness="1" Margin="10">
+                        <ListView x:Name="tablaClientes">
+                            <ListView.View>
+                                <GridView>
+                                    <GridViewColumn Header="Nombre" DisplayMemberBinding="{Binding Nombre}" />
+                                    <GridViewColumn Header="NumeroCarnetConducir" DisplayMemberBinding="{Binding NumeroCarnetConducir}" />
+                                    <GridViewColumn Header="Telefono" DisplayMemberBinding="{Binding Telefono}" />
+                                </GridView>
+                            </ListView.View>
+                        </ListView>
+                    </Border>
+
+                    <!-- Parte Derecha -->
+                    <StackPanel Grid.Column="2" Margin="10">
+                        <Label Content="Opciones Disponibles" FontWeight="Bold"/>
+                        <!-- Eliminar Cliente -->
+                        <Button Width="200" Height="25" Click="EliminarCliente">Eliminar Cliente</Button>
+
+                        <!-- Estadísticas -->
+                        <Label Content="Estadísticas" FontWeight="Bold" Margin="0,20,0,5"/>
+                        <Label Content="" Name="Etiqueta2" Margin="0,5,0,0"/>
+                    </StackPanel>
+
                 </Grid>
             </TabItem>
+
         </TabControl>
     </Grid>
 </Window>

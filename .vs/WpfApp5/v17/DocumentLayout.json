@@ -1,0 +1,86 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Tarde\\Documents\\GitHub\\WPF\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{E2100DAA-6DDA-4986-8CE7-E3298B9FEC11}|WpfApp5\\WpfApp5.csproj|c:\\users\\tarde\\documents\\github\\wpf\\wpfapp5\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E2100DAA-6DDA-4986-8CE7-E3298B9FEC11}|WpfApp5\\WpfApp5.csproj|solutionrelative:wpfapp5\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E2100DAA-6DDA-4986-8CE7-E3298B9FEC11}|WpfApp5\\WpfApp5.csproj|c:\\users\\tarde\\documents\\github\\wpf\\wpfapp5\\mainwindow.xaml||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{E2100DAA-6DDA-4986-8CE7-E3298B9FEC11}|WpfApp5\\WpfApp5.csproj|solutionrelative:wpfapp5\\mainwindow.xaml||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E2100DAA-6DDA-4986-8CE7-E3298B9FEC11}|WpfApp5\\WpfApp5.csproj|c:\\users\\tarde\\documents\\github\\wpf\\wpfapp5\\coche.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E2100DAA-6DDA-4986-8CE7-E3298B9FEC11}|WpfApp5\\WpfApp5.csproj|solutionrelative:wpfapp5\\coche.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E2100DAA-6DDA-4986-8CE7-E3298B9FEC11}|WpfApp5\\WpfApp5.csproj|c:\\users\\tarde\\documents\\github\\wpf\\wpfapp5\\cliente.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E2100DAA-6DDA-4986-8CE7-E3298B9FEC11}|WpfApp5\\WpfApp5.csproj|solutionrelative:wpfapp5\\cliente.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 1,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedHeight": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Coche.cs",
+              "DocumentMoniker": "C:\\Users\\Tarde\\Documents\\GitHub\\WPF\\WpfApp5\\Coche.cs",
+              "RelativeDocumentMoniker": "WpfApp5\\Coche.cs",
+              "ToolTip": "C:\\Users\\Tarde\\Documents\\GitHub\\WPF\\WpfApp5\\Coche.cs",
+              "RelativeToolTip": "WpfApp5\\Coche.cs",
+              "ViewState": "AQIAAAcAAAAAAAAAAAAgwBIAAAAoAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-02-22T19:35:59.455Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "MainWindow.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\Tarde\\Documents\\GitHub\\WPF\\WpfApp5\\MainWindow.xaml.cs",
+              "RelativeDocumentMoniker": "WpfApp5\\MainWindow.xaml.cs",
+              "ToolTip": "C:\\Users\\Tarde\\Documents\\GitHub\\WPF\\WpfApp5\\MainWindow.xaml.cs",
+              "RelativeToolTip": "WpfApp5\\MainWindow.xaml.cs",
+              "ViewState": "AQIAABUAAAAAAAAAAAAAAJgAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-02-22T14:45:56.677Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "MainWindow.xaml",
+              "DocumentMoniker": "C:\\Users\\Tarde\\Documents\\GitHub\\WPF\\WpfApp5\\MainWindow.xaml",
+              "RelativeDocumentMoniker": "WpfApp5\\MainWindow.xaml",
+              "ToolTip": "C:\\Users\\Tarde\\Documents\\GitHub\\WPF\\WpfApp5\\MainWindow.xaml",
+              "RelativeToolTip": "WpfApp5\\MainWindow.xaml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAkAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-02-22T16:35:32.433Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Cliente.cs",
+              "DocumentMoniker": "C:\\Users\\Tarde\\Documents\\GitHub\\WPF\\WpfApp5\\Cliente.cs",
+              "RelativeDocumentMoniker": "WpfApp5\\Cliente.cs",
+              "ToolTip": "C:\\Users\\Tarde\\Documents\\GitHub\\WPF\\WpfApp5\\Cliente.cs",
+              "RelativeToolTip": "WpfApp5\\Cliente.cs",
+              "ViewState": "AQIAAAgAAAAAAAAAAAAQwAoAAAAaAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-02-22T18:18:20.503Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

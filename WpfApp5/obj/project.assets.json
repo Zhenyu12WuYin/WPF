@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Tarde\\source\\repos\\WpfApp5\\WpfApp5\\WpfApp5.csproj",
+      "projectUniqueName": "C:\\Users\\Tarde\\Documents\\GitHub\\WPF\\WpfApp5\\WpfApp5.csproj",
       "projectName": "WpfApp5",
-      "projectPath": "C:\\Users\\Tarde\\source\\repos\\WpfApp5\\WpfApp5\\WpfApp5.csproj",
+      "projectPath": "C:\\Users\\Tarde\\Documents\\GitHub\\WPF\\WpfApp5\\WpfApp5.csproj",
       "packagesPath": "C:\\Users\\Tarde\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Tarde\\source\\repos\\WpfApp5\\WpfApp5\\obj\\",
+      "outputPath": "C:\\Users\\Tarde\\Documents\\GitHub\\WPF\\WpfApp5\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Tarde\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -40,6 +40,11 @@
         "warnAsError": [
           "NU1605"
         ]
+      },
+      "restoreAuditProperties": {
+        "enableAudit": "true",
+        "auditLevel": "low",
+        "auditMode": "direct"
       }
     },
     "frameworks": {
@@ -64,7 +69,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.401\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.200\\RuntimeIdentifierGraph.json"
       }
     }
   }

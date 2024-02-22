@@ -21,25 +21,142 @@ namespace WpfApp5
     /// </summary>
     public partial class MainWindow : Window
     {
+        IEnumerable<Coche> coches;
+        int totalCoches;
+
+        IEnumerable<Cliente> clientes;
+
         public MainWindow()
         {
             InitializeComponent();
-            marcaComboBox.ItemsSource = new String[] { "Renault", "Seat", "Volkswagen", "Ford", "Peugeot", "Opel", "Toyota", "Citroen", "Nissan", "BMW" };
-            modeloComboBox.ItemsSource = new String[] { "Clio", "Ibiza", "Golf", "Fiesta", "208", "Corsa", "Corolla", "C3", "Qashqai", "Serie 3" };
+            marcaComboBox.ItemsSource= new String[] { "BMW", "Citroen", "Ford", "Nissan", "Opel", "Peugeot", "Renault", "Seat", "Toyota", "Volkswagen" };
+            modeloComboBox.ItemsSource = new String[] { "208", "C3", "Clio", "Corsa", "Corolla", "Fiesta", "Golf", "Ibiza", "Qashqai", "Serie 3" };
 
 
 
-            // Asignar la lista enumerable como ItemsSource
-            coches.ItemsSource = Coche.ObtenerCochesEjemplo();
+
+            coches = Coche.ObtenerCochesEjemplo();
+            coches = coches.OrderBy(coche => (coche.Marca))
+                .ThenBy(coche => (coche.Modelo));
+            totalCoches = coches.Count();
+            CarChanged(null, null);
+
+
+            clientes = Cliente.ObtenerClientesEjemplo();
+            clientes = clientes.OrderBy(cliente => (cliente.Nombre));
+            ClientChanged(null, null);
+
+        }
+
+        private void CarChanged(object sender, RoutedEventArgs e)
+        {
+            
+            string marcaSeleccionada="", modeloSeleccionado="";
+            var cochesFiltrados = coches;
+
+            marcaSeleccionada = (marcaComboBox.SelectedItem)?.ToString();
+            modeloSeleccionado = (modeloComboBox.SelectedItem)?.ToString();
+
+            
+            if (!string.IsNullOrEmpty(marcaSeleccionada))
+            {
+                cochesFiltrados = cochesFiltrados.Where(coche => coche.Marca.Equals(marcaSeleccionada));
+            }
+
+            if (!string.IsNullOrEmpty(modeloSeleccionado))
+            {
+                cochesFiltrados = cochesFiltrados.Where(coche => coche.Modelo.Equals(modeloSeleccionado));
+            }
+
+            if (!string.IsNullOrEmpty(Matricula.Text))
+            {
+                cochesFiltrados = cochesFiltrados.Where(coche => coche.Matricula.StartsWith(Matricula.Text, StringComparison.OrdinalIgnoreCase));
+            }
+            
+            tablaCoches.ItemsSource = cochesFiltrados;
+            Etiqueta.Content = "Mostrando " + cochesFiltrados.Count() + " de " + totalCoches+ " coches ";
+            
         }
 
         private void Reset(object sender, RoutedEventArgs e)
         {
-            Button button = sender as Button;
 
             marcaComboBox.SelectedValue="";
             modeloComboBox.SelectedValue = "";
-            matricula.Text = "";
+            Matricula.Text = "";
+            CarChanged(null, null);
         }
+
+        private void ClientChanged(object sender, RoutedEventArgs e)
+        {
+            var clientesFiltrados = clientes;
+            if (!String.IsNullOrEmpty(Buscador.Text)) 
+            {
+                clientesFiltrados = clientes.Where(cliente => cliente.Nombre.StartsWith(Buscador.Text, StringComparison.OrdinalIgnoreCase) || 
+                cliente.NumeroCarnetConducir.StartsWith(Buscador.Text, StringComparison.OrdinalIgnoreCase) || 
+                cliente.Telefono.StartsWith(Buscador.Text, StringComparison.OrdinalIgnoreCase));
+            } 
+
+            tablaClientes.ItemsSource = clientesFiltrados;
+            Etiqueta2.Content = "Mostrando " + clientesFiltrados.Count() + " de " + clientes.Count() + " clientes ";
+
+        }
+
+        private void EliminarCliente(object sender, RoutedEventArgs e)
+        {
+            if (tablaClientes.SelectedItems != null)
+            {
+                var list = clientes.ToList();
+                var elimClientes = tablaClientes.SelectedItems;
+                foreach (var item in elimClientes)
+                    list.Remove((Cliente)item);
+                clientes = list;
+            }
+            ClientChanged(null, null);
+        }
+
+        private void Reservar(object sender, RoutedEventArgs e)
+        {
+            if (FechaInicio.SelectedDate.HasValue)
+            {
+                if (FechaFinal.SelectedDate.HasValue)
+                {
+                    if (tablaCoches.SelectedItems.Count == 1)
+                    {
+                        if (tablaClientes.SelectedItems.Count == 1)
+                        { 
+                            Warning.Content = "";
+
+                            var fechaIni = (System.DateTime)FechaInicio.SelectedDate;
+                            var fechaFinal = (System.DateTime)FechaFinal.SelectedDate;
+                            if (fechaIni < fechaFinal)
+                            {
+                                var coche = (Coche)tablaCoches.SelectedItem;
+                                var cliente = (Cliente)tablaClientes.SelectedItem;
+                                var list = coches.ToList();
+                                int n = list.IndexOf(coche);
+
+                                coche.Alquilar(fechaIni, cliente);
+                                list[n] = coche;
+                                coches = list;
+                                CarChanged(null, null);
+
+                            } else { Warning.Content = "La fecha final es anterior o igual a la fecha de inicio";}
+                        } else { Warning.Content = "Debes seleccionar 1 cliente";}
+                    } else {Warning.Content = "Debes seleccionar 1 vehículo";}
+                } else{ Warning.Content = "No has elegido fecha de finalización";}
+            } else { Warning.Content = "No has elegido fecha de inicio";}
+        }
+
+        private void Devolver(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Borrar(object sender, RoutedEventArgs e)
+        {
+
+        }
+
     }
 }
