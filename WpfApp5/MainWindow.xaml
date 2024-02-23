@@ -166,6 +166,7 @@
                         <!-- Estadísticas -->
                         <Label Content="Estadísticas" FontWeight="Bold" Margin="0,20,0,5"/>
                         <Label Content="" Name="Etiqueta2" Margin="0,5,0,0"/>
+                        <Label Content="" Name="Warning2" Margin="0,5,0,0" Foreground="Red"/>
                     </StackPanel>
 
                 </Grid>

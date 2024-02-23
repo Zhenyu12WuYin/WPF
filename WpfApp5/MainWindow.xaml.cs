@@ -22,8 +22,6 @@ namespace WpfApp5
     public partial class MainWindow : Window
     {
         IEnumerable<Coche> coches;
-        int totalCoches;
-
         IEnumerable<Cliente> clientes;
 
         public MainWindow()
@@ -38,7 +36,6 @@ namespace WpfApp5
             coches = Coche.ObtenerCochesEjemplo();
             coches = coches.OrderBy(coche => (coche.Marca))
                 .ThenBy(coche => (coche.Modelo));
-            totalCoches = coches.Count();
             CarChanged(null, null);
 
 
@@ -74,7 +71,7 @@ namespace WpfApp5
             }
             
             tablaCoches.ItemsSource = cochesFiltrados;
-            Etiqueta.Content = "Mostrando " + cochesFiltrados.Count() + " de " + totalCoches+ " coches ";
+            Etiqueta.Content = "Mostrando " + cochesFiltrados.Count() + " de " + coches.Count() + " coches ";
             
         }
 
@@ -104,14 +101,15 @@ namespace WpfApp5
 
         private void EliminarCliente(object sender, RoutedEventArgs e)
         {
-            if (tablaClientes.SelectedItems != null)
+            if (tablaClientes.SelectedItems.Count > 0)
             {
+                Warning2.Content = "";
                 var list = clientes.ToList();
                 var elimClientes = tablaClientes.SelectedItems;
                 foreach (var item in elimClientes)
                     list.Remove((Cliente)item);
                 clientes = list;
-            }
+            } else { Warning2.Content = "Selecciona al menos 1 cliente para borrar"; }
             ClientChanged(null, null);
         }
 
@@ -155,6 +153,7 @@ namespace WpfApp5
 
                     if (coche.ClienteAlquilando != null)
                     {
+                        Warning.Content = "";
                         coche.Devolver(fechaFinal);
                         list[n] = coche;
                         coches= list;
@@ -167,7 +166,16 @@ namespace WpfApp5
 
         private void Borrar(object sender, RoutedEventArgs e)
         {
-
+            if (tablaCoches.SelectedItems.Count > 0)
+            {
+                Warning.Content = "";
+                var list = coches.ToList();
+                var elimCoches = tablaCoches.SelectedItems;
+                foreach (var item in elimCoches)
+                    list.Remove((Coche)item);
+                coches = list;
+            } else { Warning.Content = "Selecciona al menos 1 vehículo para borrar"; }
+            CarChanged(null, null);
         }
 
     }
