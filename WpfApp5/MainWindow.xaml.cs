@@ -119,38 +119,50 @@ namespace WpfApp5
         {
             if (FechaInicio.SelectedDate.HasValue)
             {
-                if (FechaFinal.SelectedDate.HasValue)
+                if (tablaCoches.SelectedItems.Count == 1)
                 {
-                    if (tablaCoches.SelectedItems.Count == 1)
-                    {
-                        if (tablaClientes.SelectedItems.Count == 1)
-                        { 
-                            Warning.Content = "";
+                    if (tablaClientes.SelectedItems.Count == 1)
+                    { 
+                        Warning.Content = "";
 
-                            var fechaIni = (System.DateTime)FechaInicio.SelectedDate;
-                            var fechaFinal = (System.DateTime)FechaFinal.SelectedDate;
-                            if (fechaIni < fechaFinal)
-                            {
-                                var coche = (Coche)tablaCoches.SelectedItem;
-                                var cliente = (Cliente)tablaClientes.SelectedItem;
-                                var list = coches.ToList();
-                                int n = list.IndexOf(coche);
+                        var fechaIni = (System.DateTime)FechaInicio.SelectedDate;
 
-                                coche.Alquilar(fechaIni, cliente);
-                                list[n] = coche;
-                                coches = list;
-                                CarChanged(null, null);
+                        var coche = (Coche)tablaCoches.SelectedItem;
+                        var cliente = (Cliente)tablaClientes.SelectedItem;
+                        var list = coches.ToList();
+                        int n = list.IndexOf(coche);
 
-                            } else { Warning.Content = "La fecha final es anterior o igual a la fecha de inicio";}
-                        } else { Warning.Content = "Debes seleccionar 1 cliente";}
-                    } else {Warning.Content = "Debes seleccionar 1 vehículo";}
-                } else{ Warning.Content = "No has elegido fecha de finalización";}
+                        coche.Alquilar(fechaIni, cliente);
+                        list[n] = coche;
+                        coches = list;
+                        CarChanged(null, null);
+
+                    } else { Warning.Content = "Debes seleccionar 1 cliente";}
+                } else {Warning.Content = "Debes seleccionar 1 vehículo";}
             } else { Warning.Content = "No has elegido fecha de inicio";}
         }
 
         private void Devolver(object sender, RoutedEventArgs e)
         {
+            if (FechaFinal.SelectedDate.HasValue)
+            {
+                if (tablaCoches.SelectedItems.Count == 1)
+                {
+                    var fechaFinal = (System.DateTime)FechaFinal.SelectedDate;
+                    var coche = (Coche)tablaCoches.SelectedItem;
+                    var list = coches.ToList() ;
+                    int n = list.IndexOf(coche);
 
+                    if (coche.ClienteAlquilando != null)
+                    {
+                        coche.Devolver(fechaFinal);
+                        list[n] = coche;
+                        coches= list;
+                        CarChanged(null, null);
+
+                    } else { Warning.Content = "Seleccionar 1 vehículo que tenga un cliente alquilando"; }
+                } else { Warning.Content = "Selecciona 1 vehículo"; }
+            } else { Warning.Content = "No has seleccionado fecha de devolución"; }
         }
 
         private void Borrar(object sender, RoutedEventArgs e)
